@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <script src="jslib/mustache.js"></script> -->
+    <script type="text/template" id="mytemplate">
+       <div>
+        我的名字是{{name}},我的年龄是{{age}}岁
+       </div>
+    </script>
+    <div id="container"></div>
+
+    <script type="text/javascript">
+        let mytemplate = document.getElementById("mytemplate").innerHTML;
+        let data = {
+            name: "小明",
+            age: 12
+        }
+        // 创建渲染函数
+        function render(templateStr, data) {
+            return templateStr.replace(/\{\{(\w+)\}\}/g, function (index, $1) {
+                return data[$1]
+            })
+        }
+        // 将模板和data传入函数
+        let domcontainer = render(mytemplate, data)
+        // 页面展示
+        let container = document.getElementById("container")
+        container.innerHTML = domcontainer
+    </script>
+</body>
+
+</html>

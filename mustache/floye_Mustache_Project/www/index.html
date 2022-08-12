@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="/dist/bundle.js"></script>
+    <script type="text/template" id="mytemplate">
+       <h1>今天买的{{product}}的价格是{{price}}便士</h1></h1>
+    </script>
+    <script>
+        let mytemplate = document.getElementById("mytemplate").innerHTML;
+        let data = {
+            product: "衬衫",
+            price: 9.15
+        }
+        mustacheFun.rander(mytemplate, data)
+
+    </script>
+</body>
+
+</html>
