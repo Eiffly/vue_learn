@@ -1,22 +1,14 @@
-import { Scanner } from "./Scanner"
+import { parseTemplateToTokens } from "./parseTemplateToTokens"
+import { renderTemplate } from "./renderTemplate"
+
 window.mustacheFun = {
-    // 
     rander(mytemplate, data) {
-        var scanner = new Scanner(mytemplate)
-        var tokens = []
-        // 数据的运营
-        while (!scanner.eos()) {
-            let res = scanner.scanUntil("{{")
-            tokens.push(['text', res])
-            // console.log("结果是：", res);
-            res = scanner.scan("{{")
-            res = scanner.scanUntil("}}")
-            tokens.push(['name', res])
-            res = scanner.scan("}}")
-        }
+        // 我们将数据封锁在
+        var tokens = parseTemplateToTokens(mytemplate)
+        // 将传入的数据转化为相应的DOM
+        var result = renderTemplate(tokens, data)
         console.log(tokens);
-
+        console.log(result);
+        return result
     }
-
-    // 
 }

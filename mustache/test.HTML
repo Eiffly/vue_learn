@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // var data = {
+        //     students: [
+        //         { 'name': '小明', 'hobbies': ['编程', '游泳'] },
+        //         { 'name': '小红', 'hobbies': ['看书', '弹琴', '画画'] },
+        //         { 'name': '小强', 'hobbies': ['锻炼'] }
+        //     ]
+        // };
+        // var data = {
+        //     ".": { name: '小明', hobbies: ['编程', '游泳'] },
+        //     hobbies: ['编程', '游泳'],
+        //     name: "小明"
+        // };
+        // console.log({ ...data.hobbies[0], '.': data.hobbies[0] })
+
+
+        let data = {
+            product: "衬衫",
+            price: 9.15,
+            address: {
+                street: "皇家公园"
+            },
+            a: {
+                b: {
+                    c: {
+                        d: 50
+                    }
+                }
+            }
+        }
+
+        //keyName指的是传入的token[1]也就是{{}}中间的内容
+        function lookup(data, keyName) {
+            if (keyName.indexOf(".") != -1 && keyName !== ".") {
+                let keyArr = keyName.split(".")
+                let temp = data
+                for (let i = 0; i < keyArr.length; i++) {
+                    temp = temp[keyArr[i]]
+                }
+                return temp
+            }
+            // 没有.的情况 + 选择全部内容的情况（也就是{{.}}）
+            return data[keyName]
+        }
+
+        console.log(lookup(data, "product"))
+        console.log(lookup(data, "price"))
+        console.log(lookup(data, "address.street"))
+        console.log(lookup(data, "a.b.c.d"))
+        // console.log()
+    </script>
+</body>
+
+</html>
