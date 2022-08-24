@@ -1,32 +1,35 @@
-import {
-    init,
-    classModule,
-    propsModule,
-    styleModule,
-    eventListenersModule,
-    h,
-} from "snabbdom";
+import h from "./my_snabbdom/h"
+import patch from "./my_snabbdom/patch"
 
-// 创建patch函数
-const patch = init([classModule, propsModule, styleModule, eventListenersModule])
-// 创建虚拟节点
-var vnode1 = h('a', { props: { href: 'http://floye.xyz' } }, '一颗海胆头');
-var vnode2 = h('div', { class: { 'box': true } }, '我是一个盒子');
-var vnode3 = h('ul', {}, [
-    h('li', {}, '牛奶'),
-    h('li', {}, '咖啡'),
-    h('li', {}, '可乐')
+
+// 创建虚拟节点,text
+const myVnode1 = h("h1", {}, "xixi");
+const myVnode2 = h("h1", {}, [
+    h("section", {}, "text"),
+    h("section", {}, "天蓝蓝")
 ]);
+// const myVnode2 = h("h1", {}, "haha");
 
-console.log(vnode1);
-console.log(vnode2);
-console.log(vnode3);
+console.log(myVnode1);
+console.log(myVnode2);
+// 为一个数组，有嵌套
+// const myVnode1 = h("ul", {}, [
+//     h("li", {}, "1"),
+//     h("li", {}, "2"),
+//     h("li", {}, "3"),
+//     h("li", {}, "4"),
+//     h("li", {}, [
+//         h("span", {}, "a"),
+//         h("span", {}, "b"),
+//         h("span", {}, "c"),
+//     ])
+// ]);
+
+
 // 让虚拟节点上树
-const container1 = document.getElementById("container1")
-const container2 = document.getElementById("container2")
-const container3 = document.getElementById("container3")
-patch(container1, vnode1)
-patch(container2, vnode2)
-// patch(contai ner3, vnode3)
+let container = document.getElementById("container");
+patch(container, myVnode1);
+patch(myVnode1, myVnode2);
 
-// alert("我就弹一下")
+
+// 
