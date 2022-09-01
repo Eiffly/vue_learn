@@ -1,3 +1,4 @@
+import updateChildren from "./updateChildren";
 import createElement from "./createElement";
 
 /**
@@ -22,6 +23,7 @@ export default function patchVnode(oldVnode, newVnode) {
         // 查看旧节点有没有children属性
         if (oldVnode.children !== undefined && oldVnode.children.length > 0) {
             // 最复杂的五角星处理，封装在一个函数里面
+            updateChildren(oldVnode.elm, oldVnode.children, newVnode.children);
         } else {
             // 清空旧节点text里面的内容
             oldVnode.elm.innerHTML = ""

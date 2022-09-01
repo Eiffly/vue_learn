@@ -26,6 +26,4 @@ export default function (oldVnode, newVnode) {
         // 删除旧节点
         oldVnode.elm.parentNode.removeChild(oldVnode.elm)
     }
-
-
 }

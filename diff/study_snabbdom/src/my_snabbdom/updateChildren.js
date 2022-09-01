@@ -111,7 +111,7 @@ export default function updateChildren(parentElm, oldCh, newCh) {
       newStartVnode = newCh[++newStartIdx];
     }
   }
-  // 循环结束
+  // 循环结束（新的还有剩余or旧节点还有剩余）
   if (newStartIdx <= newEndIdx) {
     // 说明newVndoe还有剩余节点没有处理，所以要添加这些节点
     // // 插入的标杆
