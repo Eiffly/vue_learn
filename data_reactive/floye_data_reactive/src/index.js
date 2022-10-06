@@ -1,4 +1,3 @@
-import defineReactive from "./defineReactive";
 import observe from "./observe";
 
 let obj = {
@@ -13,6 +12,8 @@ let obj = {
     },
   },
 };
+console.log("helllo");
 observe(obj);
 obj.d.e.f++;
 console.log(obj);
+
