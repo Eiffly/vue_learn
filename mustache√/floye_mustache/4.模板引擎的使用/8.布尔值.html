@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="../jslib/mustache.js"></script>
+    <script type="text/template" id="mytemplate">
+       <ul>
+        {{#m}}
+         测试是否显示
+        {{/m}}
+       </ul>
+    </script>
+    <div id="container"></div>
+
+    <script type="text/javascript">
+        let templateStr = document.getElementById("mytemplate").innerHTML;
+        let data = {
+            m: false
+        }
+        let domcontainer = Mustache.render(templateStr, data)
+        let container = document.getElementById("container")
+        container.innerHTML = domcontainer
+
+    </script>
+</body>
+
+</html>

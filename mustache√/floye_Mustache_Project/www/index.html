@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="/dist/bundle.js"></script>
+    <!-- <h1>今天 买的{{product}}的价格是{{price}}便士  </h1></h1> -->
+    <!-- <div>
+            <ul>
+            {{#students}}
+                    <li class="myli">
+                学生{{name}}的爱好是
+                            <ol>
+                                    {{#hobbies}}
+                                    <li>{{.}}</li>
+                                    {{/hobbies}}
+                                </ol>
+                        </li>
+                    {{/students}}
+                </ul>
+    </div> -->
+    <!-- 我今天买的{{product}}的价格是{{price}}便士,在{{address.street}}买的 -->
+       <div id="container"></div>
+    <script type="text/template" id="mytemplate">
+        <div>
+            <ul>
+            {{#students}}
+                    <li class="myli">
+                学生{{name}}的爱好是
+                            <ol>
+                                    {{#hobbies}}
+                                    <li>{{.}}</li>
+                                    {{/hobbies}}
+                                </ol>
+                        </li>
+                    {{/students}}
+                </ul>
+        </div>
+    </script>
+    <script>
+        // 模板字符串
+        let mytemplate = document.getElementById("mytemplate").innerHTML;
+        // 数据
+        // let data = {
+        //     product: "衬衫",
+        //     price: 9.15,
+        //     address:{
+        //         street:"皇家公园"
+        //     }
+        // }
+        var data = {
+            students: [
+                { 'name': '小明', 'hobbies': ['编程', '游泳'] },
+                { 'name': '小红', 'hobbies': ['看书', '弹琴', '画画'] },
+                { 'name': '小强', 'hobbies': ['锻炼'] }
+            ]
+        };
+        let result=mustacheFun.rander(mytemplate, data)
+        // 到最后需要将数据转化为相应的dom结构
+         let container = document.getElementById("container")
+        container.innerHTML = result
+
+
+    </script>
+</body>
+
+</html>

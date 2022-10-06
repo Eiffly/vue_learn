@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 1.引入script标签 -->
+    <script src="../jslib/mustache.js"></script>
+    <!-- 2.创建模板字符串templateStr -->
+    <script type="text/template" id="mytemplate">
+       <ul>
+        {{#arr}}
+        <li>
+           {{name}}的爱好是{{#hobbies}}{{.}}、{{/hobbies}}
+        </li>
+        {{/arr}}
+       </ul>
+    </script>
+    <!-- 3.创建含有container的DOM -->
+    <div id="container"></div>
+
+    <script type="text/javascript">
+        let templateStr = document.getElementById("mytemplate").innerHTML;
+        // 2.创建data
+        let data = {
+            arr: [
+                { "name": "有爱之家", "age": 12, "sex": "男", "hobbies": ["小菜猫", "克莱因", "小刺猬"] },
+                { "name": "小菜猫", "age": 11, "sex": "女", "hobbies": ["机械", "生物"] },
+                { "name": "克莱因", "age": 13, "sex": "男", "hobbies": ["美术", "手账", "剪辑", "游泳", "制作网页"] }
+            ]
+        }
+        // 2.将数据填进去
+        let domcontainer = Mustache.render(templateStr, data)
+
+        // 3.创建含有container的DOM
+        let container = document.getElementById("container")
+        // 4.innerHTML将内容写入container
+        container.innerHTML = domcontainer
+
+    </script>
+</body>
+
+</html>
