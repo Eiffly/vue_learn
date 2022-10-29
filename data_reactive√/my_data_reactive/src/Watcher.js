@@ -23,6 +23,7 @@ export default class Watcher {
     var value;
     // 只要能找就一直找
     try {
+      // 读取属性，会自动调用Object.defineProperty中的方法
       value = this.getter(obj);
     } finally {
       Dep.target = null;
@@ -32,7 +33,7 @@ export default class Watcher {
 
   update() {
     this.run();
-  } 
+  }
 
   run() {
     this.getAndInvoke(this.callback);

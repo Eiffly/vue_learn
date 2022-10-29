@@ -11,6 +11,7 @@ export default function observe(value) {
   if (typeof value.__ob__ !== "undefined") {
     ob = value.__ob__;
   } else {
+    // 相当于对obj这个对象进行了包装，然后里面包含了属性以及新添加的__ob__
     ob = new Observer(value);
   }
   return ob;
